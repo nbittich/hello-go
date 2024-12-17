@@ -1,26 +1,9 @@
 package main
 
 import (
-	"database/sql"
 	"log"
 	"net/http"
-	"os"
-
-	_ "github.com/go-sql-driver/mysql"
 )
-
-var db *sql.DB
-
-func getEnvOrDefault(key string, defaultValue string) string {
-	var (
-		v     string
-		exist bool
-	)
-	if v, exist = os.LookupEnv(key); !exist {
-		return defaultValue
-	}
-	return v
-}
 
 func main() {
 	http.HandleFunc("/", helloHandler)
